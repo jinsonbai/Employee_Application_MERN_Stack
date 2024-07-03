@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { getToken } from '../authService';
+import { getToken } from '../authService'; // Adjust the path if needed
 
 const EmployeeListPage = () => {
   const [employees, setEmployees] = useState([]);
@@ -11,7 +11,7 @@ const EmployeeListPage = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const token = getToken();
+        const token = getToken(); // Retrieve the token
         const response = await axios.get('http://localhost:5000/api/employees', {
           headers: {
             'x-auth-token': token,
@@ -24,7 +24,7 @@ const EmployeeListPage = () => {
     };
 
     fetchEmployees();
-  }, []);
+  }, []); // Empty dependency array ensures useEffect runs once on component mount
 
   return (
     <div>
@@ -41,3 +41,4 @@ const EmployeeListPage = () => {
 };
 
 export default EmployeeListPage;
+
